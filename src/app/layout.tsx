@@ -1,12 +1,20 @@
-export const metadata={
-    title:"learning Next.js",
-    description:"Learning Next.js with VatsR"
-}
+"use client"
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+
+const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Product", path: "/products" },
+    { name: "Counter", path: "/counter" }
+]
 
 export default function RootLayout(
-    { children }: 
-    { children: React.ReactNode }
+    { children }:
+        { children: React.ReactNode }
 ) {
+    const pathname = usePathname();
     return (
         <html lang="en">
             <body style={{ margin: 0, fontFamily: "Arial, sans-serif" }}>
@@ -24,17 +32,14 @@ export default function RootLayout(
                     <h1 style={{ margin: 0 }}>My Website</h1>
 
                     <nav style={{ display: "flex", gap: "20px" }}>
-                        <a href="/" style={{ color: "white", textDecoration: "none" }}>
-                            Home
-                        </a>
-
-                        <a href="/about" style={{ color: "white", textDecoration: "none" }}>
-                            About
-                        </a>
-
-                        <a href="/contact" style={{ color: "white", textDecoration: "none" }}>
-                            Contact
-                        </a>
+                        {navLinks.map((links) => {
+                            const isActive = pathname === links.path || (links.path !== "/" && pathname.startsWith(links.path));
+                            return (
+                                <Link key={links.name} href={links.path} style={{ color: isActive ? "red" : "white", textDecoration: isActive ? "underline" : "none" }}>
+                                    {links.name}
+                                </Link>
+                        )}
+                        )}
                     </nav>
                 </header>
 
