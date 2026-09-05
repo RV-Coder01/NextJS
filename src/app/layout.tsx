@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { ErrorWrapper } from "./error-wrapper";
 
 
 const navLinks = [
@@ -44,7 +45,10 @@ export default function RootLayout(
                 </header>
 
                 <main style={{ minHeight: "70vh", padding: "40px" }}>
-                    {children}
+                    <ErrorWrapper>
+                        {children}
+                    </ErrorWrapper>
+                    
                 </main>
 
                 <footer
