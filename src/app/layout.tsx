@@ -1,8 +1,9 @@
 "use client"
-
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ErrorWrapper } from "./error-wrapper";
+import {ThemeProvider} from "./components/theme-provider"
+// import {createContext} from "react"
 
 
 const navLinks = [
@@ -11,6 +12,22 @@ const navLinks = [
     { name: "Counter", path: "/counter" }
 ]
 
+// type Theme={
+//     color:{
+//         primary:string,
+//         secondary:string
+//     }
+// }
+
+// const defaultTheme:Theme={
+//     color:{
+//         primary:"blue",
+//         secondary:"white"
+//     }
+// }
+
+// const ThemeContext=createContext<Theme>(defaultTheme)
+
 export default function RootLayout(
     { children }:
         { children: React.ReactNode }
@@ -18,6 +35,8 @@ export default function RootLayout(
     const pathname = usePathname();
     return (
         <html lang="en">
+            {/* <ThemeContext.Provider value={defaultTheme}> */}
+            <ThemeProvider>
             <body style={{ margin: 0, fontFamily: "Arial, sans-serif" }}>
 
                 <header
@@ -66,6 +85,8 @@ export default function RootLayout(
                 </footer>
 
             </body>
+            </ThemeProvider>
+            {/* </ThemeContext.Provider> */}
         </html>
     );
 }

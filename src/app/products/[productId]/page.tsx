@@ -9,6 +9,14 @@ export const generateMetadata=async ({params}:props): Promise<Metadata> =>{
     }
 }
 
+export async function generateStaticParams(){
+    return[
+        {productId:"1"},
+        {productId:"2"},
+        {productId:"3"}]
+}
+
+export const dynamicParams = false;
 
 export default async function ProductDetails(
     { params }: props
@@ -17,7 +25,7 @@ export default async function ProductDetails(
     const productId = (await params).productId;
     return (
         <>
-            <h1>Welcome to Product {productId} detail page</h1>
+            <h1>Welcome to Product {productId} detail page at {new Date().toLocaleTimeString()}</h1>
         </>
     )
 }
