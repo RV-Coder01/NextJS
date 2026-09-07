@@ -2,7 +2,7 @@ import chinaImage from "./china.webp";
 import tajMahalImage from "./taj-mahal.jpeg";
 import petraImage from "./petra.webp";
 import colosseumImage from "./colosseum.webp";
-import christBrazilImage from "./christ_brazil.avif";
+import christBrazilImage from "./christ_brazil.jpeg";
 
 export const data = [
     {
